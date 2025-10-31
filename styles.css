@@ -1,0 +1,101 @@
+body{
+    background-color: rgb(218, 184, 135);
+}
+
+
+.Main{
+    padding: 5%;
+}
+
+.fm{
+    background-color: rgb(141, 163, 180);
+    border-radius: 20px;
+    padding: 20px;
+    width: 70%;
+    margin-left: 15%;
+    box-shadow: 5px 8px;
+}
+h1{
+    display:flex;
+    justify-content: center;
+    
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    width: 20%;
+}
+
+button:hover{
+    background-color: rgb(41, 41, 41);
+    color: white;
+}
+
+
+input{
+    margin-left: 20px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+label{
+    margin-right: 5px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.deduction-section{
+    margin-top: 20px;
+    margin-left: 20px;
+    border-top: 2px solid black;
+    padding-top: 10px;
+}
+
+.popup-overlay {
+      display: none; /* hidden by default */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Pop-up box */
+    .popup {
+      background: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      border-radius: 10px;
+      width: 500px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .popup button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup button:hover {
+      background: #2980b9;
+    }
+    
+
+  .id-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.id-wrapper p {
+  margin: 0;
+}

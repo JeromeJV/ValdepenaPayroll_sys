@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body style="background-color: bisque;">  
+    <div class="Main">
+        <form class="fm">
+            <h1>GRC Payroll System</h1>
+            <center>   
+                <label>ID NUMBER:</label> 
+                <input  type="Enter your ID number" id="idnum"  placeholder="ID number"><br>
+                <label>LAST NAME:</label> 
+                <input type="Enter your last name" id="Lname" placeholder="Last Name"> <br>
+                <label>FIRST NAME:</label>
+                <input type="Enter your first name" id="Fname" placeholder="First Name"> <br>
+                <label>MIDDLE NAME:</label>
+                <input type="Enter your middle name" id="Mname" placeholder="Middle Name"> <br>
+                <label>POSITION:</label>
+                <input type="Enter your possition" id="poss" placeholder="Possition">
+                <label>RATE:</label>
+                <input type="Enter your rate" id="rt" placeholder="Rate"><br>
+                <label>WORK DAYS:</label>  
+                <input type="Enter your work days" id="wd" placeholder="Work Days">
+                <br>
+                <button type="button"  onclick="openPopup()">Submit</button>
+            </center>
+        </form>
+        <center>
+        <div id="popupOverlay" class="popup-overlay">
+            <div class="popup">
+                <div class="id-wrapper">
+                     <p>id number:</p>
+                     <p id="idnumber"></p>
+                </div>
+
+                <div class="id-wrapper">
+                     <p>last name:</p>
+                     <p id="lastname"></p>
+                </div>
+                <div class="id-wrapper">
+                     <p>first name:</p>
+                     <p id="firstname"></p>
+                </div>
+                <div class="id-wrapper">
+                     <p>middle name:</p>
+                     <p id="middlename"></p>
+                </div>
+                <div class="id-wrapper">
+                     <p>position:</p>
+                     <p id="position"></p>
+                </div>
+                <div class="id-wrapper">
+                     <p>rate:</p>
+                     <p id="rate"></p>
+                </div>
+                <div class="id-wrapper">
+                     <p>work days:</p>
+                     <p id="workdays"></p>
+                </div>
+
+                <div class="id-wrapper">
+                     <p>grossPay:</p>
+                     <p id="grosspay"></p>
+                </div>
+                <div class="deduction-section">
+                    <h4>Deduction</h4>
+                    <div class="id-wrapper">
+                         <p>SSS:</p>
+                         <p id="sss"></p>
+                    </div>
+                    <div class="id-wrapper">
+                         <p>PhilHealth:</p>
+                         <p id="philhealth"></p>
+                    </div>
+                    <div class="id-wrapper">
+                         <p>Pag-IBIG:</p>
+                         <p id="pagibig"></p>
+                    </div>
+                    <div class="id-wrapper">
+                         <p>Tax:</p>
+                         <p id="tax"></p>
+                    </div>
+                    <div class="id-wrapper">
+                         <p>Total Deduction:</p>
+                         <p id="total-deduction"></p>
+                    </div> 
+                    <div class="id-wrapper">
+                         <p>Net Pay:</p>
+                         <p id="netpay"></p>
+                    </div>
+                    <center>
+                    <button onclick="closePopup()">Close</button>
+                    </center>
+               </div>
+            </div>
+        </div>
+        </center>
+        <script>
+               function openPopup() {
+                    // Get input values
+                    const idnum = document.getElementById('idnum').value;
+                    const Lname = document.getElementById('Lname').value;
+                    const Fname = document.getElementById('Fname').value;
+                    const Mname = document.getElementById('Mname').value;
+                    const poss = document.getElementById('poss').value;
+                    const rt = parseFloat(document.getElementById('rt').value);
+                    const wd = parseFloat(document.getElementById('wd').value);
+     
+                    // Calculate gross pay
+                    const grossPay = rt * wd;
+
+                    const sss = grossPay * 0.05; // SSS deduction
+                    const philhealth = grossPay * 0.02; // PhilHealth deduction
+                    const pagibig = grossPay * 0.03; // Pag-IBIG deduction
+                    const tax = grossPay * 0.05; // Tax deduction
+
+                    const totalDeduction = sss + philhealth + pagibig + tax;
+                    const netPay = grossPay - totalDeduction;
+
+                    // Set values in popup
+                    document.getElementById('idnumber').innerText = idnum;
+                    document.getElementById('lastname').innerText = Lname;
+                    document.getElementById('firstname').innerText = Fname;
+                    document.getElementById('middlename').innerText = Mname;
+                    document.getElementById('position').innerText = poss;
+                    document.getElementById('rate').innerText = rt.toFixed(2);
+                    document.getElementById('workdays').innerText = wd;
+                    document.getElementById('grosspay').innerText = grossPay.toFixed(2);
+     
+                    document.getElementById('sss').textContent = 'P' + sss.toFixed(1);
+                    document.getElementById('philhealth').textContent = 'P' + philhealth.toFixed(1);
+                    document.getElementById('pagibig').textContent = 'P' + pagibig.toFixed(1);
+                    document.getElementById('tax').textContent = 'P' + tax.toFixed(1);
+                    document.getElementById('total-deduction').textContent = 'P' + totalDeduction.toFixed(1);
+                    document.getElementById('netpay').textContent = 'P' + netPay.toFixed(1);
+
+                    // Show popup
+                    document.getElementById('popupOverlay').style.display = 'block';
+               }
+     
+               function closePopup() {
+                    document.getElementById('popupOverlay').style.display = 'none';
+               }
+        </script>
+  </div>
+</body>
+</html>
